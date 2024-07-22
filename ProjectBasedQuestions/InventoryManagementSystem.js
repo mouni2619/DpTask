@@ -66,11 +66,16 @@ class InventoryManagementSystem {
     }
 
     checkReorderPoints() {
+        let found = false;
         this.inventory.forEach(item => {
             if (item.quantity <= item.reorderPoint) {
                 console.log(`Reorder alert for item ${item.name}: Current quantity is ${item.quantity}, reorder point is ${item.reorderPoint}`);
+                found = true;
             }
         });
+        if (!found) {
+            console.log("No items need to be reordered.");
+        }
     }
 
     generateReport() {
